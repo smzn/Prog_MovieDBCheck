@@ -44,6 +44,11 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/videoView" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="登録"
+            android:id="@+id/Check" />
 
     </LinearLayout>
 

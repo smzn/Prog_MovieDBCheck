@@ -17,6 +17,7 @@ public class MovieActivity extends ActionBarActivity {
     //onCreate内で定義すると、onClickListenerから参照できないため、ここで定義
     public VideoView video;
     public EditText counter;
+    private AsyncHttp asynchttp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MovieActivity extends ActionBarActivity {
 
         Button b_stop = (Button) findViewById(R.id.Stop);
         Button b_start = (Button) findViewById(R.id.Start);
+        Button b_check = (Button)findViewById(R.id.Check);
         counter = (EditText) findViewById(R.id.Counter);
 
         //停止ボタンが押された時の定義
@@ -36,6 +38,7 @@ public class MovieActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 video.pause();
+
             }
         });
         //再生ボタンが押された時の定義
@@ -59,6 +62,15 @@ public class MovieActivity extends ActionBarActivity {
                 });
             }
         }, 0, 50);
+
+        b_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Log.d("Android_ID",android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID));
+                asynchttp = new AsyncHttp(android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID));
+                asynchttp.execute((double) video.getCurrentPosition() / 1000);
+            }
+        });
 
     }
 
