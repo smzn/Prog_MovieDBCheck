@@ -1,5 +1,6 @@
 package com.example.mizuno.prog_movie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -32,6 +33,8 @@ public class MovieActivity extends ActionBarActivity {
         Button b_start = (Button) findViewById(R.id.Start);
         Button b_check = (Button)findViewById(R.id.Check);
         counter = (EditText) findViewById(R.id.Counter);
+
+        Button networkcheck = (Button)findViewById(R.id.NetworkCheck);
 
         //停止ボタンが押された時の定義
         b_stop.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +72,14 @@ public class MovieActivity extends ActionBarActivity {
                 //Log.d("Android_ID",android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID));
                 asynchttp = new AsyncHttp(android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID));
                 asynchttp.execute((double) video.getCurrentPosition() / 1000);
+            }
+        });
+
+        networkcheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MovieActivity.this, NetworkCheckActivity.class);
+                startActivity(intent);
             }
         });
 

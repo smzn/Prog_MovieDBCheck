@@ -44,11 +44,26 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/videoView" />
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="登録"
-            android:id="@+id/Check" />
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="登録"
+                android:id="@+id/Check"
+                android:layout_weight="0.5"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Network Check"
+                android:id="@+id/NetworkCheck"
+                android:layout_weight="0.5"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
